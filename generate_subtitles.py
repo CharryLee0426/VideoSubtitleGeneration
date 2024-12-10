@@ -2,6 +2,7 @@ import os
 import sys
 import argparse
 import whisper
+from tqdm import tqdm
 
 def generate_subtitles(input_file, output_file=None, language=None, model_type="medium"):
     """
@@ -34,7 +35,7 @@ def generate_subtitles(input_file, output_file=None, language=None, model_type="
     # Write the SRT file
     print(f"Saving subtitles to {output_file}...")
     with open(output_file, "w", encoding="utf-8") as f:
-        for i, segment in enumerate(result["segments"]):
+        for i, segment in enumerate(tqdm(result["segments"], desc="Writing subtitles")):
             start_time = format_time(segment["start"])
             end_time = format_time(segment["end"])
             f.write(f"{i + 1}\n")

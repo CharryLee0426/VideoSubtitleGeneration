@@ -1,5 +1,6 @@
 import argparse
 from googletrans import Translator
+from tqdm import tqdm
 
 
 def parse_srt(file_path):
@@ -36,7 +37,7 @@ def translate_subtitles(entries, target_language):
     Translates the subtitle entries to the target language.
     """
     translator = Translator()
-    for entry in entries:
+    for entry in tqdm(entries, desc="Translating subtitles"):
         text = "\n".join(entry["text"])
         translated = translator.translate(text, dest=target_language).text
         entry["translated_text"] = translated
