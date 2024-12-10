@@ -15,6 +15,10 @@ Video subtitles generaotor is a tiny project that helps me to generate video sub
     sudo apt install ffmpeg
     pip install googletrans==4.0.0-rc1
     ```
+    Or simply,
+    ```
+    pip install -r requirements.txt
+    ```
 2. Clone the repository and enter to the project directory.
 3. Create such folder in order to hold video files and subtitles files
     ```
@@ -33,6 +37,13 @@ Video subtitles generaotor is a tiny project that helps me to generate video sub
     python translate_subtitles.py -i ./data/subtitles/test.srt -o ./data/subtitles/zh-cn.srt -l zh-cn
     ```
     These arguments can be changed based on the requirements.
+
+    For each command, you can use `--help` or `-h` to get more information.
+6. Insert the subtitles into the video (Optional)
+    It's recommended to use `ffmpeg` to do it, just run this command
+    ```
+    ffmpeg -i <original_video_path> -vf subtitles=<srt_file_path> -c:a aac -b:a 192k <output_file_path>
+    ```
 
 ## 4. Limitations
 - The project is based on OpenAI's whisper, which is a large model. It may take a long time to generate subtitles for a long video.
