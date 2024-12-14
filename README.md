@@ -1,7 +1,12 @@
 # Video Subtitles Generator
 
 ## 1. Introduction
-Video subtitles generaotor is a tiny project that helps me to generate video subtitles quickly and get bilingual subtitles without doing too many work. The project is based on OpenAI's whisper and Google Translate for getting the subtitle and translating it to the target language.
+Video subtitles generaotor is a tiny project that helps me to generate video subtitles quickly and get bilingual subtitles without doing too many work. The project is based on OpenAI's whisper and Anthropic's Claude for getting the subtitle and translating it to the target language. Here is one example.
+
+<video width="600" controls>
+  <source src="./assets/showcase.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## 2. Requirements
 - Python 3.8 or higher;
@@ -47,5 +52,5 @@ Video subtitles generaotor is a tiny project that helps me to generate video sub
 
 ## 4. Limitations
 - The project is based on OpenAI's whisper, which is a large model. It may take a long time to generate subtitles for a long video.
-- The project is based on Google Translate, which may not be accurate for some words.
-- The subtitles segmentation is not so perfect and the translator can't consider the relationship between neighbor segments, which may cause some mistakes.
+- LLM can't make sure 100% accuracy. Based on my experiements, OpenAI's gpt-4o is not good at this task.
+- Claude's performance is limited. The main problem is that its max token is too small (8,192 tokens maximum). One possible way is to change this model to Google's Gemini 1.5 or 2.0, which are very good for API invokation.
